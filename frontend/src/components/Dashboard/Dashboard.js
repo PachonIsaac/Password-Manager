@@ -118,11 +118,9 @@ const Dashboard = () => {
           <ul>
             {passwords.map(password => (
               <li key={password.passwordID}>
-                <span>{password.password}</span>
-                <div className="button-container">
-                <button onClick={() => handleEditPassword(password.passwordID)}><FaEdit /></button>
-                <button onClick={() => handleDeletePassword(password.passwordID)}><FaTrash /></button>
-                </div>
+              <span>{password.password}</span>
+              <button onClick={() => handleEditPassword(password.passwordID)}><FaEdit /></button>
+              <button onClick={() => handleDeletePassword(password.passwordID)}><FaTrash /></button>
               </li>
             ))}
           </ul>

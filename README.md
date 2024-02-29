@@ -1,15 +1,26 @@
 # PASSWORD MANAGER
 
-PASSWORD MANAGER es una API sencilla creada con fastAPI en Python para manejar claves seguras para un usuario. La API se conecta a una base de datos hecha con SQLite que tiene dos tablas, user y password, así se almacenan los datos del usuario y las contraseñas de los mismos.
+Password Manager es una aplicación web diseñada para ayudarte a gestionar tus contraseñas de forma segura y conveniente. Con esta aplicación, puedes almacenar, editar y eliminar contraseñas de manera sencilla, todo desde una interfaz intuitiva y fácil de usar.
+
+PASSWORD MANAGER maneja una API sencilla creada con fastAPI en Python para manejar claves seguras para un usuario. La API se conecta a una base de datos hecha con SQLite que tiene dos tablas, user y password, así se almacenan los datos del usuario y las contraseñas de los mismos.
+
+Además, el front-end está hecho con React, y se conecta a la API para realizar las operaciones de CRUD. La aplicación web es responsiva y se adapta a cualquier dispositivo.
 
 ## Tabla de Contenidos
 
 - [Requisitos](#requisitos)
 - [Instalación](#instalación)
 - [Ejecución](#ejecución)
+
 - [Documentación de la API](#documentación-de-la-api)
 
-# Requisitos
+## Tecnologías utilizadas
+Frontend: React, HTML, CSS, JavaScript
+Backend: Python, FastAPI, SQLite
+
+
+# Instalacion y ejecución
+Para ejecutar este proyecto, necesitarás tener instalado lo siguiente:
 
 ## Python
 Asegúrate de tener Python instalado en tu sistema. Puedes descargar la última versión desde https://www.python.org/
@@ -17,6 +28,8 @@ Además de un IDE de su preferencia, en este caso se utilizó Visual Studio Code
 
 ## Entorno virtual (Opcional pero recomendado)
 Se recomienda el uso de un entorno virtual para aislar las dependencias del proyecto. Puedes crear y activar un entorno virtual de la siguiente manera:
+
+
 
 ```bash
 # Instalar virtualenv
@@ -27,22 +40,39 @@ python -m venv venv
 
 ```
 
-# Instalación
-Para la correcta instalación de la API se debe tener instalado Python 3.8 o superior y pip. Se recomienda el uso de un entorno virtual para aislar las dependencias del proyecto. Puedes crear y activar un entorno virtual de la siguiente manera:
-
-```bash
-# Activar el entorno virtual
-# En Windows
-.\venv\Scripts\activate
-# En Linux/Mac
-source venv/bin/activate
-```
+## Node.js
+Asegúrate de tener Node.js instalado en tu sistema. Puedes descargar la última versión desde https://nodejs.org/
 
 ## Dependencias del proyecto
 Una vez que tengas tu entorno virtual activado, instala las dependecias del proyecto utilizando "requirements.txt"
 ```bash
 pip install -r requirements.txt
 ```
+
+# Instalación
+## Activar el entorno virtual
+En Windows
+```bash
+.\venv\Scripts\activate
+```
+En Linux/Mac
+```bash
+source venv/bin/activate
+```
+
+## Iniciar el servidor del Backend
+Al activar el entorno virtual y tener todas las dependencias instaladas, puedes iniciar el servidor de desarrollo con el siguiente comando:
+```bash
+uvicorn main:app --reload
+```
+## Iniciar el servidor del Frontend
+Para iniciar el servidor del frontend, debes navegar a la carpeta "frontend" y ejecutar el siguiente comando:
+```bash
+npm start
+```
+
+Nota: El codigo por defecto corre el backend en el puerto 8000 y el frontend en el puerto 3000, si deseas cambiar estos puertos, puedes hacerlo en el archivo "main.py" en el backend y en el archivo "package.json" en el frontend.
+
 
 # Ejecución
 Puedes ejecutar la aplicacion con el siguiente comando:
@@ -53,30 +83,14 @@ Este comando asume que el punto de entrada de tu aplicación es main y la instan
 
 Además la terminal te proporcionará la dirección de la API, para visualizar la documentación de la API debes ingresar a la dirección que te proporciona la terminal, y agregando "/docs" al final de la dirección.
 
+# Desarrollo del frontend
+Todo el desarrollo del frontend se realizó en React, utilizando componentes funcionales y hooks. Además, se utilizó Axios para realizar las peticiones a la API.
+
+
 # Documentación de la API
 
 ## Descripción
 Esta API proporciona servicios relacionados con la gestion de usuarios autirozados. La autenticación se realiza mediante un token JWT que se obtiene al hacer login. Los servicios que se ofrecen son los siguientes:
-
-## Servicios de usuario
-- Crear un usuario
-    Para crear un usuario se debe hacer una petición POST a la ruta /users con el siguiente cuerpo:
-    ```bash
-    {
-        "username": "admin",
-        "password": "1234"
-    }
-    ```
-
-- Obtener todos los usuarios
-    Para obtener todos los usuarios se debe hacer una petición GET a la ruta /users
-    Este metodo solo puede ser accedido por un usuario con rol de administrador, y se la fase de desarrollo se implementó para verificar los datos de los usuarios en la base de datos.
-    
-- Eliminar un usuario
-    Para eliminar un usuario se debe hacer una petición DELETE a la ruta /users/{username}, cabe resaltar que cada usuario tiene un atributo disabled que indica si el usuario esta deshabilitado o no, por lo que al eliminar un usuario se cambia el valor de este atributo a True.
-
-- Recuperar un usuario
-    Para recuperar un usuario se debe hacer una petición PUT a la ruta /users/{username}, cabe resaltar que cada usuario tiene un atributo disabled que indica si el usuario esta deshabilitado o no, por lo que al recuperar un usuario se cambia el valor de este atributo a False.
 
 
 ## Autenticación

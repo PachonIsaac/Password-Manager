@@ -57,8 +57,8 @@
   }
   
   .password-list button {
-    margin-right: 150px;
-    background-color: rgb(209, 172, 172);
+    margin-right: 0px;
+    background-color: transparent;
     color: black;
     border: none;
     padding: 5px 10px;
@@ -67,12 +67,13 @@
   }
   
   .password-list button:hover {
-    background-color: gainsboro;
+    background-color: transparent;
     
   }
   
   .password-list ul {
     list-style-type: none;
+    width: 500px;
     padding: 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -83,11 +84,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 10px 0;
       padding: 10px;
       border-radius: 5px;
       text-align: left;
-      justify-content: flex-end; /* Align icons to the right */
     }
 
   
@@ -96,12 +96,9 @@
     color :white;
   }
   
-  .password-list li button {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
+  .password-list li .button-container {
+    display: flex;
+    justify-content: flex-end;
   }
   
 
@@ -122,7 +119,3 @@
     z-index: 999; /* Asegura que el botón esté en la parte superior */
     box-sizing: border-box; /* Ajusta el tamaño del botón */
   }
-
-  
-  
-
