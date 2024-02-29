@@ -1,0 +1,128 @@
+.dashboard-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.Navbar {
+    background-color: #282c34;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .Navbar-logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .Logout-button {
+    background-color: transparent;;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .Logout-button:hover {
+    color: #ccc;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .password-list {
+    margin-top: 20px;
+  }
+  
+  .password-list h2 {
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .password-list button {
+    margin-right: 150px;
+    background-color: rgb(209, 172, 172);
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .password-list button:hover {
+    background-color: gainsboro;
+    
+  }
+  
+  .password-list ul {
+    list-style-type: none;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+ 
+    .password-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: left;
+      justify-content: flex-end; /* Align icons to the right */
+    }
+
+  
+  .password-list li span {
+    flex: 1;
+    color :white;
+  }
+  
+  .password-list li button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+
+  /* Estilo para las filas pares de la lista */
+.password-list li:nth-child(odd) {
+  background-color: #282c34; /* Hace que el fondo de las filas pares sea transparente */
+}
+
+  .plus-button {
+    position: fixed; /* Fija el botón en la ventana del navegador */
+    top: 120px; /* Ajusta la posición desde la parte superior */
+    right: 18px; /* Ajusta la posición desde el borde derecho */
+    color: #fff; /* Cambia el color del texto del botón */
+    width: 40px; /* Ajusta el ancho del botón */
+    height: 40px; /* Ajusta la altura del botón */
+    font-size: 30px; /* Ajusta el tamaño del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    z-index: 999; /* Asegura que el botón esté en la parte superior */
+    box-sizing: border-box; /* Ajusta el tamaño del botón */
+  }
+
+  
+  
+
