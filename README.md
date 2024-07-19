@@ -1,137 +1,132 @@
 # PASSWORD MANAGER
 
-Password Manager es una aplicación web diseñada para ayudarte a gestionar tus contraseñas de forma segura y conveniente. Con esta aplicación, puedes almacenar, editar y eliminar contraseñas de manera sencilla, todo desde una interfaz intuitiva y fácil de usar.
+Password Manager is a web application designed to help you manage your passwords securely and conveniently. With this application, you can easily store, edit, and delete passwords from an intuitive and user-friendly interface.
 
-PASSWORD MANAGER maneja una API sencilla creada con fastAPI en Python para manejar claves seguras para un usuario. La API se conecta a una base de datos hecha con SQLite que tiene dos tablas, user y password, así se almacenan los datos del usuario y las contraseñas de los mismos.
+PASSWORD MANAGER handles a simple API created with FastAPI in Python to manage secure keys for a user. The API connects to an SQLite database with two tables, user and password, to store user data and passwords.
 
-Además, el front-end está hecho con React, y se conecta a la API para realizar las operaciones de CRUD. La aplicación web es responsiva y se adapta a cualquier dispositivo.
+Additionally, the front-end is built with React and connects to the API to perform CRUD operations. The web application is responsive and adapts to any device.
 
-## Tabla de Contenidos
+## Table of Contents
 
-- [Requisitos](#requisitos)
-- [Instalación](#instalación)
-- [Ejecución](#ejecución)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Running](#running)
+- [API Documentation](#api-documentation)
 
-- [Documentación de la API](#documentación-de-la-api)
+## Technologies Used
+- **Frontend**: React, HTML, CSS, JavaScript
+- **Backend**: Python, FastAPI, SQLite
 
-## Tecnologías utilizadas
-Frontend: React, HTML, CSS, JavaScript
-Backend: Python, FastAPI, SQLite
-
-
-# Instalacion y ejecución
-Para ejecutar este proyecto, necesitarás tener instalado lo siguiente:
+# Installation and Running
+To run this project, you will need to have the following installed:
 
 ## Python
-Asegúrate de tener Python instalado en tu sistema. Puedes descargar la última versión desde https://www.python.org/
-Además de un IDE de su preferencia, en este caso se utilizó Visual Studio Code.
+Make sure Python is installed on your system. You can download the latest version from [Python's official site](https://www.python.org/). Additionally, use an IDE of your choice, in this case, Visual Studio Code was used.
 
-## Entorno virtual (Opcional pero recomendado)
-Se recomienda el uso de un entorno virtual para aislar las dependencias del proyecto. Puedes crear y activar un entorno virtual de la siguiente manera:
-
-
+## Virtual Environment (Optional but recommended)
+It is recommended to use a virtual environment to isolate the project dependencies. You can create and activate a virtual environment as follows:
 
 ```bash
-# Instalar virtualenv
+# Install virtualenv
 pip install virtualenv
 
-# Crear un entorno virtual
+# Create a virtual environment
 python -m venv venv
-
 ```
-
 ## Node.js
-Asegúrate de tener Node.js instalado en tu sistema. Puedes descargar la última versión desde https://nodejs.org/
+Make sure to have Node.js installed on your system. You can download the latest version from https://nodejs.org/
 
-## Dependencias del proyecto
-Una vez que tengas tu entorno virtual activado, instala las dependecias del proyecto utilizando "requirements.txt"
-```bash
+## Project Dependencies
+Once you have your virtual environment activated, install the project dependencies using "requirements.txt"
+
+``` bash
 pip install -r requirements.txt
 ```
+# Installation
+## Activate the Virtual Environment
+On Windows
 
-# Instalación
-## Activar el entorno virtual
-En Windows
-```bash
+``` bash
 .\venv\Scripts\activate
 ```
-En Linux/Mac
-```bash
+On Linux/Mac
+
+``` bash
 source venv/bin/activate
 ```
 
-## Iniciar el servidor del Backend
-Al activar el entorno virtual y tener todas las dependencias instaladas, puedes iniciar el servidor de desarrollo con el siguiente comando:
-```bash
+## Start the Backend Server
+With the virtual environment activated and all dependencies installed, you can start the development server with the following command:
+
+``` bash
 uvicorn main:app --reload
-```
-## Iniciar el servidor del Frontend
-Para iniciar el servidor del frontend, debes navegar a la carpeta "frontend" y ejecutar el siguiente comando:
-```bash
+```	
+
+## Start the Frontend Server
+To start the frontend server, navigate to the "frontend" folder and run the following command:
+
+``` bash
 npm start
 ```
+Note: The default code runs the backend on port 8000 and the frontend on port 3000. If you want to change these ports, you can do so in the "main.py" file in the backend and in the "package.json" file in the frontend.
 
-Nota: El codigo por defecto corre el backend en el puerto 8000 y el frontend en el puerto 3000, si deseas cambiar estos puertos, puedes hacerlo en el archivo "main.py" en el backend y en el archivo "package.json" en el frontend.
+# Running
+You can run the application with the following command:
 
-
-# Ejecución
-Puedes ejecutar la aplicacion con el siguiente comando:
 ```bash
 uvicorn main:app --reload
 ```
-Este comando asume que el punto de entrada de tu aplicación es main y la instancia de la aplicación es app. Ajusta según sea necesario.
+This command assumes that the entry point of your application is main and the application instance is app. Adjust as necessary.
 
-Además la terminal te proporcionará la dirección de la API, para visualizar la documentación de la API debes ingresar a la dirección que te proporciona la terminal, y agregando "/docs" al final de la dirección.
+Additionally, the terminal will provide the address of the API. To view the API documentation, go to the address provided by the terminal and add "/docs" at the end.
 
-# Desarrollo del frontend
-Todo el desarrollo del frontend se realizó en React, utilizando componentes funcionales y hooks. Además, se utilizó Axios para realizar las peticiones a la API.
+# Frontend Development
+All frontend development was done in React, using functional components and hooks. Additionally, Axios was used to make requests to the API.
 
+# API Documentation
+## Description
+This API provides services related to managing authorized users. Authentication is done using a JWT token obtained upon login. The services offered are as follows:
 
-# Documentación de la API
+## Authentication
+To access the API services, it is necessary to authenticate, assuming the user has already been created. To do this, a POST request must be made to the /login route with the following body:
 
-## Descripción
-Esta API proporciona servicios relacionados con la gestion de usuarios autirozados. La autenticación se realiza mediante un token JWT que se obtiene al hacer login. Los servicios que se ofrecen son los siguientes:
-
-
-## Autenticación
-Para poder acceder a los servicios de la API es necesario autenticarse, teniendo en cuenta que ya se creo el usuario. Para ello se debe hacer una petición POST a la ruta /login con el siguiente cuerpo:
-```bash
+``` bash
 {
     "username": "admin",
     "password": "1234"
 }
 ```
-Si el usuario y la contraseña son correctos, se obtendrá un token JWT que se debe utilizar para acceder a los servicios de la API. Además todo el proceso de seguridad se implementó gracias a el OAuth2PasswordBearer de fastAPI. Para mayor información sobre el proceso de autenticación se puede consultar la documentación de fastAPI. https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/
+If the username and password are correct, a JWT token will be obtained, which must be used to access the API services. Additionally, the entire security process was implemented using FastAPI's OAuth2PasswordBearer. For more information on the authentication process, you can refer to the FastAPI documentation: https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/
 
-## Servicios de contraseña
-Para acceder a cualquiera de los servicios de contraseña, el usuario debe haber hecho previamente un login, de lo contrario no podrá acceder a ellos. Además gracias a el Depends de fastAPI, se verifica que el token JWT sea valido y se captura la información del usuario que realiza la solicitud.
+## Password Services
+To access any of the password services, the user must have previously logged in; otherwise, they will not be able to access them. Additionally, using FastAPI's Depends, the JWT token is verified, and the user's information making the request is captured.
 
-- Consultar las contraseñan
-    Para consultar las contraseñas se debe hacer una petición GET a la ruta /passwords, conociendo el usuario que lo solicita mediante get_current_user se busca todas las contraseñas que tenga el usuario en la base de datos.
+-Retrieve Passwords
+    To retrieve passwords, a GET request must be made to the /passwords route. The user making the request is identified using get_current_user, and all passwords stored by the user in the database are retrieved.
 
-- Crear una contraseña
-    Para crear una contraseña se realiza una peticion POST y se le pedí al usuario por medio de las "Query Parameters" la información de la contraseña, la cual se almacena en la base de datos. Dicha informacion consta de:
+-Create a Password
+    To create a password, a POST request is made, and the user is asked for the password information through Query Parameters, which is then stored in the database. The information consists of:
 
-    length (int): Longitud de la contraseña
-    capital_letters (int): Cantidad de mayusculas de la contraseña
-    numbers (int): Cantidad de numeros de la contraseña
-    special_characters (int): Cantidad de caracteres especiales de la contraseña
+    length (int): Length of the password
+    capital_letters (int): Number of uppercase letters in the password
+    numbers (int): Number of numbers in the password
+    special_characters (int): Number of special characters in the password
 
-    Con esta información se genera una contraseña aleatoria que cumpla con los requisitos del usuario.
+    With this information, a random password that meets the user's requirements is generated.
 
--Actualizar una contraseña
-    Para actualizar una contraseña se realiza una peticion PUT y se le pedí al usuario por medio de las "Query Parameters" la información de la contraseña, la cual se actualiza en la base de datos. Dicha informacion consta de:
+-Update a Password
+    To update a password, a PUT request is made, and the user is asked for the password information through Query Parameters, which is then updated in the database. The information consists of:
 
-    password_id (int):  Id de la contraseña a actualizar
-    length (int): Longitud de la nueva contraseña
-    capital_letters (int): Cantidad de mayusculas de la nueva contraseña
-    numbers (int): Cantidad de numeros de la nueva contraseña
-    special_characters (int): Cantidad de caracteres especiales de la nueva contraseña
+    password_id (int): ID of the password to update
+    length (int): Length of the new password
+    capital_letters (int): Number of uppercase letters in the new password
+    numbers (int): Number of numbers in the new password
+    special_characters (int): Number of special characters in the new password
 
-    Con esta información se genera una contraseña aleatoria que cumpla con los requisitos del usuario.
+    With this information, a random password that meets the user's requirements is generated.
 
-- Eliminar una contraseña
-    Para eliminar una contraseña se realiza una peticion DELETE y se le pedí al usuario por medio de las "Query Parameters" la información de la contraseña, la cual se elimina de la base de datos. Dicha informacion consta de:
+-Delete a Password
+    To delete a password, a DELETE request is made, and the user is asked for the password information through Query Parameters, which is then deleted from the database. The information consists of:
 
-    password_id (int): Id de la contraseña a eliminar
+    password_id (int): ID of the password to delete
 
